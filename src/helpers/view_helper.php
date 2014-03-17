@@ -110,7 +110,7 @@ HTML;
 
 				$isSelected = (strtolower($url) == strtolower($uri[0]) ? ' selected' : '');
 
-				$markUp .= '<li class="header-nav-item">';
+				$markUp .= '<li class="header-nav-item'.$isSelected.'">';
 					$markUp .= '<a href="/'.$url.'">';
 						$markUp .= $title;
 					$markUp .= '</a>';

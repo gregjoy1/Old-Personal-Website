@@ -2,13 +2,13 @@ SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
-CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `mydb` ;
+CREATE SCHEMA IF NOT EXISTS `gregjoy` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
+USE `gregjoy` ;
 
 -- -----------------------------------------------------
--- Table `mydb`.`Content`
+-- Table `gregjoy`.`Content`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Content` (
+CREATE TABLE IF NOT EXISTS `gregjoy`.`Content` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `record_name` VARCHAR(255) NOT NULL,
   `zone_id` INT(1) NOT NULL DEFAULT 1,
@@ -22,9 +22,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `mydb`.`Comment`
+-- Table `gregjoy`.`Comment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`Comment` (
+CREATE TABLE IF NOT EXISTS `gregjoy`.`Comment` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
   `conent_id` INT NOT NULL,
   `date_published` DATETIME NOT NULL,

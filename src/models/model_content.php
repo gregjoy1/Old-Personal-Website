@@ -138,7 +138,7 @@
 			// Gets single result from database using newly created connection object to 
 			// escape and execute the query.
 			$orderFields = DBHelper::GetSingleResult(
-				'SELECT * FROM Content WHERE record_name = ' . DBHelper::EscapeString($recordName, $connection),
+				'SELECT * FROM Content WHERE record_name = ' . DBHelper::QuoteEscapeString($recordName, $connection),
 				$connection
 			);
 
@@ -152,9 +152,9 @@
 
 		}
 
-		private function _loadFromArray($array)
+		private function _loadFromArray($orderFields)
 		{
-		
+			
 			$this->setId($orderFields['id']);
 			
 			$this->setRecordName($orderFields['record_name']);

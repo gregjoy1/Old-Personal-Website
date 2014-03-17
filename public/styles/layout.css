@@ -122,6 +122,14 @@ span.date {
 	width: 120px;
 }
 
+.header-nav-item.selected {
+	background-color: #00B4FF;
+}
+
+.header-nav-item.selected:hover {
+	width: 80px;
+}
+
 #content-container {
 	width: 930px;
 	margin: 5px 15px 15px 15px;
@@ -251,6 +259,10 @@ span.date {
 		width: 100%;
 	}
 
+	.header-nav-item.selected:hover {
+		width: 100%;
+	}
+
 	#header-nav-list {
 		padding: 0;
 		display: none;
@@ -295,6 +307,10 @@ span.date {
 	}
 
 	.header-nav-item:hover {
+		width: 100%;
+	}
+
+	.header-nav-item.selected:hover {
 		width: 100%;
 	}
 
