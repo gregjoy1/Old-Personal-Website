@@ -122,12 +122,22 @@ span.date {
 	width: 120px;
 }
 
-.header-nav-item.selected {
+.header-nav-item.pre-load-selected {
 	background-color: #00B4FF;
+	width: 120px;
 }
 
-.header-nav-item.selected:hover {
+.header-nav-item.post-load-selected {
+	background-color: #00B4FF;
 	width: 80px;
+}
+
+.header-nav-item.post-load-selected:hover {
+	width: 80px;
+}
+
+.header-nav-item.pre-load-selected:hover {
+	width: 120px;
 }
 
 #content-container {
@@ -259,7 +269,19 @@ span.date {
 		width: 100%;
 	}
 
-	.header-nav-item.selected:hover {
+	.header-nav-item.pre-load-selected {
+		width: 100%;
+	}
+
+	.header-nav-item.post-load-selected {
+		width: 100%;
+	}
+
+	.header-nav-item.post-load-selected:hover {
+		width: 100%;
+	}
+
+	.header-nav-item.pre-load-selected:hover {
 		width: 100%;
 	}
 
@@ -306,11 +328,19 @@ span.date {
 		width: 100%;
 	}
 
-	.header-nav-item:hover {
+	.header-nav-item.pre-load-selected {
 		width: 100%;
 	}
 
-	.header-nav-item.selected:hover {
+	.header-nav-item.post-load-selected {
+		width: 100%;
+	}
+
+	.header-nav-item.post-load-selected:hover {
+		width: 100%;
+	}
+
+	.header-nav-item.pre-load-selected:hover {
 		width: 100%;
 	}
 

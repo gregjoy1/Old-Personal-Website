@@ -8,6 +8,7 @@
 		// Attributes
 		private $_id;
 		private $_recordName;
+		private $_title;
 		private $_zoneId;
 		private $_datePublished;
 		private $_content;
@@ -47,6 +48,11 @@
 			$this->_recordName = $recordName;
 		}
 
+		public function setTitle($title)
+		{
+			$this->_title = $title;
+		}
+
 		public function setZoneId($zoneId)
 		{
 			$this->_zoneId = $zoneId;
@@ -81,6 +87,20 @@
 		public function getRecordName()
 		{
 			return $this->_recordName;
+		}
+
+		public function getTitle($useRecordNameFallback = false)
+		{
+			if($this->_title == '' && $useRecordNameFallback)
+			{
+				// strip out hypens and replace with spaces, upper case first charactor
+				// test-page-name => Test page name
+				return ucfirst(str_replace('-', ' ', strtolower($this->getRecordName())));
+			}
+			else
+			{
+				return $this->_title;
+			}
 		}
 
 		public function getZoneId()
@@ -158,6 +178,7 @@
 			$this->setId($orderFields['id']);
 			
 			$this->setRecordName($orderFields['record_name']);
+			$this->setTitle($orderFields['title']);
 			$this->setZoneId($orderFields['zone_id']);
 			$this->setDatePublished($orderFields['date_published']);
 			$this->setContent($orderFields['content']);
@@ -173,6 +194,7 @@
 			// Creating an array of all the fields to be used when inserting/updating the db
 			$fields = array(
 				'record_name = '.DBHelper::QuoteEscapeString($this->getRecordName(), $connection),
+				'title = '.DBHelper::QuoteEscapeString($this->getTitle(), $connection),
 				'zone_id = '.DBHelper::QuoteEscapeString($this->getZoneId(), $connection),
 				'date_published = '.DBHelper::QuoteEscapeString($this->getDatePublished(), $connection),
 				'content = '.DBHelper::QuoteEscapeString($this->getContent(), $connection),

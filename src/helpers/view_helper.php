@@ -23,7 +23,7 @@
 		<!-- Basic Page Needs
 	  ================================================== -->
 		<meta charset="utf-8">
-		<title>Personal</title>
+		<title>$title</title>
 		<meta name="description" content="">
 		<meta name="author" content="">
 
@@ -108,7 +108,7 @@ HTML;
 			foreach ($menuItems as $title => $url)
 			{
 
-				$isSelected = (strtolower($url) == strtolower($uri[0]) ? ' selected' : '');
+				$isSelected = (strtolower($url) == strtolower($uri[0]) ? ' pre-load-selected' : '');
 
 				$markUp .= '<li class="header-nav-item'.$isSelected.'">';
 					$markUp .= '<a href="/'.$url.'">';
@@ -171,6 +171,27 @@ HTML;
 			return $markUp;
 
 		}
+
+		public static function Draw404PageNotFound($uri)
+		{
+
+				header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
+
+				ViewHelper::DrawHead('404 Not Found', $uri, true);
+
+					echo '<h1>';
+						echo '404 Page Not Found.';
+					echo '</h1>';
+
+					echo '<p>';
+						echo 'The page that you have requested could not be found.';
+					echo '</p>';
+
+				ViewHelper::DrawFoot(true);
+	
+				exit;
+		}
+
 	}
 
 ?>

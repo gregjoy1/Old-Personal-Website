@@ -22,20 +22,10 @@
 		{
 			if($this->getContent()->getId() == '')
 			{
-				header($_SERVER["SERVER_PROTOCOL"]." 404 Not Found");
-
-				ViewHelper::DrawHead('Page', $this->getURI(), true);
-
-					echo '<h2>';
-						echo 'The page that you have requested could not be found.';
-					echo '</h2>';
-
-				ViewHelper::DrawFoot(true);
-	
-				exit;
+				ViewHelper::Draw404PageNotFound($this->getURI());
 			}
 
-			ViewHelper::DrawHead('Page', $this->getURI(), true);
+			ViewHelper::DrawHead($this->getContent()->getTitle(true), $this->getURI(), true);
 
 			echo $this->getContent()->getContent();
 
