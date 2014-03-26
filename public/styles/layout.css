@@ -4,13 +4,25 @@ html,body {
 	font-family: "Open Sans", sans-serif;
 }
 
-h1 {
+h1, h2 {
 	margin: 0;
 }
 
 p {
 	margin-top: 0.5em;
 	margin-bottom: 0.5em;
+}
+
+a.hidden {
+	background: transparent;
+	color: #515151;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+a.hidden:hover {
+	color: #00B4FF;
+	text-decoration: underline;
 }
 
 a {
@@ -199,6 +211,93 @@ span.date {
 	font-size: 0.75em;
 }
 
+h1.home-page {
+	text-align: center;
+	font-size: 3em;
+	margin-top: 25px;
+}
+
+h3.home-page {
+	text-align: center;
+	margin: 0;
+}
+
+.logo-link-container {
+	width: 180px;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.logo-link-container .link {
+	border: 0;
+	text-decoration: none;
+}
+
+.logo-link-container .logo {
+	width: 50px;
+}
+
+.blog-entry-container {
+	border-bottom: 1px solid lightgrey;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+h1.page-header {
+	 margin-bottom: 10px;
+	 border-bottom: 1px solid lightgrey;
+	 padding-bottom: 5px;
+}
+
+.contact-me-form {
+	width: 100%;
+}
+
+.contact-me-form input, textarea {
+
+	-webkit-transition: color 0.2s ease, background-color 0.2s ease, height 0.2s ease;
+	-moz-transition: color 0.2s ease, background-color 0.2s ease, height 0.2s ease;
+	-ms-transition: color 0.2s ease, background-color 0.2s ease, height 0.2s ease;
+	-o-transition: color 0.2s ease, background-color 0.2s ease, height 0.2s ease;
+	transition: color 0.2s ease, background-color 0.2s ease, height 0.2s ease;
+
+	width: 97%;
+	height: 30px;
+	line-height: 40px;
+	font-size: 1em;
+	margin: 10px 0 5px 0;
+	padding: 4px 1% 4px 1%;
+	border: 0;
+	border: 1px solid lightgrey;
+}
+
+.contact-me-form textarea {
+	resize: vertical;
+	height: 60px;
+}
+
+.contact-me-form [type='submit'] {
+	width: 99%;
+	background-color: white;
+	height: 40px;
+	line-height: 30px;
+}
+
+.contact-me-form [type='submit']:hover {
+	background-color: #00B4FF;
+	color: white;
+}
+
+span.error-message {
+	font-weight: bold;
+	color: rgb(220, 0, 0);
+}
+
+h3.contact-me-success {
+	margin-bottom: 30px;
+}
+
 /* #Medium Screens
 ================================================== */
 
@@ -297,6 +396,12 @@ span.date {
 	.image-container {
 		width: 95%;
 	}
+
+	.contact-me-form input, textarea {
+		height: 40px;
+		font-size: 1.25em;
+	}
+
 }
 
 /* #Mobile (Landscape)
@@ -356,4 +461,10 @@ span.date {
 	.image-container {
 		width: 95%;
 	}
+
+	.contact-me-form input, textarea {
+		height: 40px;
+		font-size: 1.25em;
+	}
+
 }

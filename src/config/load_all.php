@@ -4,15 +4,6 @@
 
 	/*
 	--------------------------------------------
-	* Config loaders
-	--------------------------------------------
-	*/
-	
-	require_once ROOT_DIR.'/config/config.php';
-	require_once ROOT_DIR.'/config/db_config.php';
-
-	/*
-	--------------------------------------------
 	* Model loaders
 	--------------------------------------------
 	*/
@@ -50,5 +41,22 @@
 	require_once ROOT_DIR.'/helpers/db_helper.php';
 	require_once ROOT_DIR.'/helpers/log_helper.php';
 	require_once ROOT_DIR.'/helpers/view_helper.php';
+	require_once ROOT_DIR.'/helpers/content_helper.php';
+
+	/*
+	--------------------------------------------
+	* Library loaders
+	--------------------------------------------
+	*/
+	require_once(ROOT_DIR.'/libraries/recaptchalib.php');
+
+	/*
+	--------------------------------------------
+	* Config loaders
+	--------------------------------------------
+	*/
+	
+	require_once ROOT_DIR.'/config/config.php';
+	require_once ROOT_DIR.'/config/db_config.php';
 
 ?>

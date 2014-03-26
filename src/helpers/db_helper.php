@@ -1,6 +1,6 @@
 <?php
 
-	class DbHelper
+	class DBHelper
 	{
 
 		public static function GetConnection()

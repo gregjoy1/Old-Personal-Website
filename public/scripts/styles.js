@@ -53,6 +53,6 @@
 	// smoothes nav sizes
 	window.setTimeout(function() {
 		$('.pre-load-selected').removeClass('pre-load-selected').addClass('post-load-selected');
-	}, 100);
+	}, 50);
 
 })();

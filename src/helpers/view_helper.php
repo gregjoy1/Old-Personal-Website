@@ -97,10 +97,9 @@ HTML;
 		{
 
 			$menuItems = array(
-				'Contact' => 'contact',
-				'Blog' => 'blog',
 				'Projects' => 'projects',
-				'CV' => 'cv'
+				'Contact' => 'contact',
+				'Blog' => 'blog'
 			);
 	
 			$markUp = '<ul id="header-nav-list">';
@@ -190,6 +189,22 @@ HTML;
 				ViewHelper::DrawFoot(true);
 	
 				exit;
+		}
+
+		public static function DrawContentHeaderAndDate($content, $link = false)
+		{
+
+			echo ($link ? '<a href="/blog/'.$content->getRecordName().'" class="hidden">' : '');
+
+				echo '<h2>';
+					echo $content->getTitle();
+				echo '</h2>';
+
+			echo ($link ? '</a>' : '');
+
+			echo '<span class="date">';
+				echo date('jS F Y', strtotime($content->getDatePublished()));
+			echo '</span>';
 		}
 
 	}

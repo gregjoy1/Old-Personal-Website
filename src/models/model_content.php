@@ -14,8 +14,6 @@
 		private $_content;
 		private $_isBlog;
 
-		private $_orderItems = array();
-
 		// Constructor
 		public function __construct($id = null, $loadByRecordName = false)
 		{
