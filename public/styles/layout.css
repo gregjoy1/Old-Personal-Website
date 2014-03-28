@@ -36,7 +36,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-span.date {
+.small {
 	font-size: 0.75em;
 }
 
@@ -244,7 +244,7 @@ h3.home-page {
 	margin-bottom: 10px;
 }
 
-h1.page-header {
+.page-header {
 	 margin-bottom: 10px;
 	 border-bottom: 1px solid lightgrey;
 	 padding-bottom: 5px;

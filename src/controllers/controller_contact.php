@@ -169,7 +169,47 @@
 
 		private function _sendMessage($previousFields)
 		{
+			global $SITE_CONFIG;
 
+			$comment = new Comment();
+
+			$comment->setName($previousFields['name']);
+			$comment->setEmailAddress($previousFields['email']);
+			$comment->setContent($previousFields['message']);
+			$comment->setIpAddress($_SERVER["REMOTE_ADDR"]);
+			$comment->setDatePublished(date('Y-m-d H:i:s'));
+			$comment->setIsMessage(true);
+			$comment->save();
+
+			ob_start();
+
+				echo '<p>';
+					echo 'Name: ' . $comment->getName();
+				echo '</p>';
+
+				echo '<p>';
+					echo 'Email: ' . $comment->getEmailAddress();
+				echo '</p>';
+
+				echo '<p>';
+					echo 'IP: ' . $comment->getIpAddress();
+				echo '</p>';
+
+				echo '<p>';
+					echo 'Message:';
+				echo '</p>';
+
+				echo '<pre>';
+					echo $comment->getContent();
+				echo '</pre>';
+
+			$message = ob_get_clean();
+
+			$headers = 	'From: portal@gregjoy.co.uk' . "\r\n";
+			$headers .= "MIME-Version: 1.0" . "\r\n";
+			$headers .= "Content-type:text/html;charset=iso-8859-1" . "\r\n";
+
+			mail($SITE_CONFIG['email'], 'New message on gregjoy.co.uk', $message, $headers);
 		}
 
 	}

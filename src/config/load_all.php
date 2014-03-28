@@ -8,6 +8,7 @@
 	--------------------------------------------
 	*/
 	require_once ROOT_DIR.'/models/model_content.php';
+	require_once ROOT_DIR.'/models/model_comment.php';
 
 	/*
 	--------------------------------------------

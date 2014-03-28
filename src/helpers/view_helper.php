@@ -3,13 +3,15 @@
 	class ViewHelper
 	{
 
-		public static function DrawHead($title, $uri, $echo = false)
+		public static function DrawHead($title, $uri, $echo = false, $description = false)
 		{
 			global $SITE_CONFIG;
 
 			$url_prefix = $SITE_CONFIG['url_prefix'];
 
 			$navigationMarkUp = self::DrawNavigation($uri);
+
+			$description = ($description ? $description : $SITE_CONFIG['default_description']);
 
 			$markUp = <<<HTML
 
@@ -24,8 +26,8 @@
 	  ================================================== -->
 		<meta charset="utf-8">
 		<title>$title</title>
-		<meta name="description" content="">
-		<meta name="author" content="">
+		<meta name="description" content="$description">
+		<meta name="author" content="Greg Joy">
 
 		<!-- Mobile Specific Metas
 	  ================================================== -->
@@ -97,9 +99,9 @@ HTML;
 		{
 
 			$menuItems = array(
-				'Projects' => 'projects',
 				'Contact' => 'contact',
-				'Blog' => 'blog'
+				'Blog' => 'blog',
+				'Projects' => 'projects'
 			);
 	
 			$markUp = '<ul id="header-nav-list">';
@@ -202,7 +204,7 @@ HTML;
 
 			echo ($link ? '</a>' : '');
 
-			echo '<span class="date">';
+			echo '<span class="small">';
 				echo date('jS F Y', strtotime($content->getDatePublished()));
 			echo '</span>';
 		}

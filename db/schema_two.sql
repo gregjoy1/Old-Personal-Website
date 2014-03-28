@@ -3,12 +3,12 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 CREATE SCHEMA IF NOT EXISTS `mydb` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci ;
-USE `gregjoy` ;
+USE `mydb` ;
 
 -- -----------------------------------------------------
 -- Table `mydb`.`Content`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gregjoy`.`Content` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Content` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `record_name` VARCHAR(255) NOT NULL,
   `title` VARCHAR(255) NULL,
@@ -25,9 +25,9 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `mydb`.`Comment`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `gregjoy`.`Comment` (
+CREATE TABLE IF NOT EXISTS `mydb`.`Comment` (
   `id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-  `conent_id` INT NOT NULL,
+  `content_id` INT NULL,
   `date_published` DATETIME NOT NULL,
   `name` VARCHAR(255) NOT NULL,
   `email_address` VARCHAR(25) NOT NULL,
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `gregjoy`.`Comment` (
   `ip_address` VARCHAR(45) NOT NULL,
   `show_email` TINYINT(1) NOT NULL DEFAULT false,
   `zone_id` INT NOT NULL DEFAULT 1,
+  `is_message` INT(1) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 

@@ -68,6 +68,12 @@
 
 			echo $this->getContent()->getContent();
 
+			echo '<p class="small">';
+				echo '<a href="/blog" class="hidden">';
+					echo '&larr; Back to blog.';
+				echo '</a>';
+			echo '</p>';
+
 			ViewHelper::DrawFoot(true);
 		}
 

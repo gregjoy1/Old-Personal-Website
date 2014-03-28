@@ -2,31 +2,27 @@
 
 	require_once dirname(dirname(__FILE__)).'/config/load_all.php';
 
-	class Content
+	class Comment
 	{
 
 		// Attributes
 		private $_id;
-		private $_recordName;
-		private $_title;
-		private $_zoneId;
+		private $_contentId;
 		private $_datePublished;
+		private $_name;
+		private $_EmailAddress;
 		private $_content;
-		private $_isBlog;
+		private $_ipAddress;
+		private $_showEmail;
+		private $_zoneId;
+		private $_isMessage;
 
 		// Constructor
-		public function __construct($id = null, $loadByRecordName = false)
+		public function __construct($id = null)
 		{
 			if(!is_null($id))
 			{
-				if($loadByRecordName)
-				{
-					$this->loadByRecordName($id);
-				}
-				else
-				{
-					$this->loadById($id);
-				}
+				$this->loadById($id);
 			}
 		}
 
@@ -41,19 +37,9 @@
 			$this->_id = $id;
 		}
 
-		public function setRecordName($recordName)
+		public function setContentId($contentId)
 		{
-			$this->_recordName = $recordName;
-		}
-
-		public function setTitle($title)
-		{
-			$this->_title = $title;
-		}
-
-		public function setZoneId($zoneId)
-		{
-			$this->_zoneId = $zoneId;
+			$this->_contentId = $id;
 		}
 
 		public function setDatePublished($datePublished)
@@ -61,14 +47,39 @@
 			$this->_datePublished = $datePublished;
 		}
 
+		public function setName($name)
+		{
+			$this->_name = $name;
+		}
+
+		public function setEmailAddress($emailAddress)
+		{
+			$this->_emailAddress = $emailAddress;
+		}
+
 		public function setContent($content)
 		{
 			$this->_content = $content;
 		}
 
-		public function setIsBlog($isBlog)
+		public function setIpAddress($ipAddress)
 		{
-			$this->_isBlog = $isBlog;
+			$this->_ipAddress = $ipAddress;
+		}
+
+		public function setShowEmail($showEmail)
+		{
+			$this->_showEmail = $showEmail;
+		}
+
+		public function setZoneId($zoneId)
+		{
+			$this->_zoneId = $zoneId;
+		}
+
+		public function setIsMessage($isMessage)
+		{
+			$this->_isMessage = $isMessage;
 		}
 
 		/* 
@@ -82,28 +93,9 @@
 			return $this->_id;
 		}
 
-		public function getRecordName()
+		public function getContentId()
 		{
-			return $this->_recordName;
-		}
-
-		public function getTitle($useRecordNameFallback = false)
-		{
-			if($this->_title == '' && $useRecordNameFallback)
-			{
-				// strip out hypens and replace with spaces, upper case first charactor
-				// test-page-name => Test page name
-				return ucfirst(str_replace('-', ' ', strtolower($this->getRecordName())));
-			}
-			else
-			{
-				return $this->_title;
-			}
-		}
-
-		public function getZoneId()
-		{
-			return $this->_zoneId;
+			return $this->_contentId;
 		}
 
 		public function getDatePublished()
@@ -111,15 +103,41 @@
 			return $this->_datePublished;
 		}
 
+		public function getName()
+		{
+			return $this->_name;
+		}
+
+		public function getEmailAddress()
+		{
+			return $this->_emailAddress;
+		}
+
 		public function getContent()
 		{
 			return $this->_content;
 		}
 
-		public function getIsBlog()
+		public function getIpAddress()
 		{
-			return $this->_isBlog;
+			return $this->_ipAddress;
 		}
+
+		public function getShowEmail()
+		{
+			return $this->_showEmail;
+		}
+
+		public function getZoneId()
+		{
+			return $this->_zoneId;
+		}
+
+		public function getIsMessage()
+		{
+			return $this->_isMessage;
+		}
+
 		/* 
 		--------------------------------------------
 		* DB orientated methods
@@ -134,29 +152,7 @@
 			// Gets single result from database using newly created connection object to 
 			// escape and execute the query.
 			$recordArray = DBHelper::GetSingleResult(
-				'SELECT * FROM Content WHERE id = ' . DBHelper::EscapeString($id, $connection),
-				$connection
-			);
-
-			// Close the connection to free up resources.
-			DBHelper::CloseConnection($connection);
-			
-			if(count($recordArray) > 0)
-			{
-				$this->_loadFromArray($recordArray);
-			}
-
-		}
-
-		public function loadByRecordName($recordName)
-		{
-			// Gets database connection.
-			$connection = DBHelper::GetConnection();
-			
-			// Gets single result from database using newly created connection object to 
-			// escape and execute the query.
-			$recordArray = DBHelper::GetSingleResult(
-				'SELECT * FROM Content WHERE record_name = ' . DBHelper::QuoteEscapeString($recordName, $connection),
+				'SELECT * FROM Comment WHERE id = ' . DBHelper::EscapeString($id, $connection),
 				$connection
 			);
 
@@ -174,13 +170,16 @@
 		{
 			
 			$this->setId($recordArray['id']);
-			
-			$this->setRecordName($recordArray['record_name']);
-			$this->setTitle($recordArray['title']);
-			$this->setZoneId($recordArray['zone_id']);
+
+			$this->setContentId($recordArray['content_id']);
 			$this->setDatePublished($recordArray['date_published']);
+			$this->setName($recordArray['name']);
+			$this->setEmailAddress($recordArray['email_address']);
 			$this->setContent($recordArray['content']);
-			$this->setIsBlog($recordArray['is_blog'] == '0');
+			$this->setIpAddress($recordArray['ip_address']);
+			$this->setShowEmail($recordArray['show_email']);
+			$this->setZoneid($recordArray['zone_id']);
+			$this->setIsMessage($recordArray['is_message']);
 
 		}
 
@@ -191,18 +190,29 @@
 
 			// Creating an array of all the fields to be used when inserting/updating the db
 			$fields = array(
-				'record_name = '.DBHelper::QuoteEscapeString($this->getRecordName(), $connection),
-				'title = '.DBHelper::QuoteEscapeString($this->getTitle(), $connection),
-				'zone_id = '.DBHelper::EscapeString($this->getZoneId(), $connection),
 				'date_published = '.DBHelper::QuoteEscapeString($this->getDatePublished(), $connection),
+				'name = '.DBHelper::QuoteEscapeString($this->getName(), $connection),
+				'email_address = '.DBHelper::QuoteEscapeString($this->getEmailAddress(), $connection),
 				'content = '.DBHelper::QuoteEscapeString($this->getContent(), $connection),
-				'is_blog = '.DBHelper::EscapeString($this->getIsBlog() ? 1 : 0, $connection)
+				'ip_address = '.DBHelper::QuoteEscapeString($this->getIpAddress(), $connection),
+				'show_email = '.DBHelper::EscapeString($this->getShowEmail() ? 1 : 0, $connection),
+				'is_message = '.DBHelper::EscapeString($this->getIsMessage() ? 1 : 0, $connection)
 			);
+
+			if($this->getContentId() != '')
+			{
+				$fields[] = 'content_id = '.DBHelper::EscapeString($this->getContentId(), $connection);
+			}
+
+			if($this->getZoneId() != '')
+			{
+				$fields[] = 'zone_id = '.DBHelper::EscapeString($this->getZoneid(), $connection);
+			}
 
 			if($this->getId() == '')
 			{
 				// Creating sql insert statement from generated assoc array $fields
-				$sql = 'INSERT INTO Content SET '.implode(', ', $fields);
+				$sql = 'INSERT INTO Comment SET '.implode(', ', $fields);
 
 				// Exec sql insert statement
 				if(!DBHelper::ExecuteQuery($sql, $connection))
@@ -218,7 +228,7 @@
 			else
 			{
 				// Creating sql update statement from generated assoc array $fields
-				$sql = 'UPDATE Content 
+				$sql = 'UPDATE Comment 
 							SET '.implode(', ', $fields).'
 							WHERE id = '.DBHelper::EscapeString($this->getId(), $connection);
 
