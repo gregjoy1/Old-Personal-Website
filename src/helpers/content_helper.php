@@ -8,7 +8,7 @@
 
 			$connection = DBHelper::GetConnection();
 
-			DBHelper::EscapeString($page, $connection);
+			$page = DBHelper::EscapeString($page, $connection);
 
 			$lowerLimit = ($page * 5);
 
@@ -27,6 +27,22 @@
 			}
 
 			return $blogPosts;
+
+		}
+
+		public static function GetNumberOfBlogPosts()
+		{
+
+			$connection = DBHelper::GetConnection();
+
+			$results = DBHelper::GetSingleResult(
+				'SELECT count(id) AS count FROM Content WHERE zone_id = 1 AND is_blog = 1',
+				$connection
+			);
+
+			DBHelper::CloseConnection($connection);
+
+			return $results['count'];
 
 		}
 

@@ -40,6 +40,29 @@ a:hover {
 	font-size: 0.75em;
 }
 
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+.blog-list-paging {
+	overflow: auto;
+}
+
+.footer-text {
+	font-size: 0.8em;
+	margin-right: 10px;
+}
+
+.footer-heart {
+	width: 16px;
+	position: relative;
+	top: 3px;
+}
+
 #main-container {
 	margin: 10px auto 10px auto;
 	width: 960px;
