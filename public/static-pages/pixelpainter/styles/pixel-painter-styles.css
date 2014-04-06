@@ -1,0 +1,184 @@
+html {
+    height: 100%;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden;
+}
+
+#app-container {
+    width: 100%;
+    height: 100%;
+    border: 1px solid lightgrey;
+    margin: auto;
+}
+
+#pixel-painter-container {
+    width: 100%;
+    height: 100%;
+    background-color: #fefefe;
+}
+
+#pixel-painter-toolbar {
+    width: 100%;
+    float: left;
+    height: 40px;
+    border-bottom: 1px solid lightgrey;
+}
+
+#pixel-painter-toolbar input {
+    height: 32px;
+    margin: 3px;
+    border: 1px solid lightgrey;
+}
+
+#pixel-painter-viewport {
+    width: 100%;
+    overflow: auto;
+    float: left;
+}
+
+#pixel-painter-canvas {
+    border-collapse: collapse;
+    /*margin: 20px auto;*/
+}
+
+.pixel-row {
+    width: auto;
+    height: auto;
+}
+
+.pixel-row .pixel {
+    border: 1px solid lightgrey;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.no-grid .pixel-row .pixel {
+    border: none;
+}
+
+#zoom-control-container {
+    overflow: hidden;
+    width: 65px;
+    float: left;
+
+    -webkit-transition: width 0.2s ease;
+    -moz-transition: width 0.2s ease;
+    -ms-transition: width 0.2s ease;
+    -o-transition: width 0.2s ease;
+    transition: width 0.2s ease;
+}
+
+#zoom-control-container.show{
+    width: 313px;
+}
+
+#zoom-control-container.show > .button{
+    background-color: #EEEEEE;
+}
+
+#zoom-button-container {
+    width: 328px;
+}
+
+#zoom-control-container #zoom-button-container .button {
+    width: 30px;
+    border-right: 1px solid lightgrey;
+}
+
+#zoom-control-container .button {
+    width: 64px;
+    border-right: 1px solid lightgrey;
+}
+
+.button {
+    background-color: #FFFFFF;
+    height: 100%;
+    width: 40px;
+    float: left;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+
+    -webkit-transition: background-color 0.2s ease;
+    -moz-transition: background-color 0.2s ease;
+    -ms-transition: background-color 0.2s ease;
+    -o-transition: background-color 0.2s ease;
+}
+
+.button,.title {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.button.selected {
+    background-color: #EEEEEE;
+}
+
+.button:hover {
+    background-color: #EEEEEE;
+}
+
+#colour-control-container {
+    width: 175px;
+    float: left;
+}
+
+#colour-control-container input {
+    width: 55px;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 1.0em;
+    padding: 0 5px 0 5px;
+    margin-left: 0;
+    cursor: pointer;
+}
+
+#colour-control-container .title {
+    background-color: #FFFFFF;
+    border: 1px solid lightgrey;
+    border-right: 0;
+    height: 32px;
+    padding: 5px;
+    margin: 3px 0 3px 3px;
+    cursor: pointer;
+}
+
+#tool-control-container {
+    width: 168px;
+    border-right: 1px solid lightgrey;
+    float: left;
+}
+
+#tool-control-container .title {
+    background-color: #FFFFFF;
+    border: 1px solid lightgrey;
+    border-right: 0;
+    height: 32px;
+    padding: 0 5px 0 5px;
+    margin: 3px 0 3px 3px;
+    cursor: pointer;
+    float: left;
+    line-height: 32px;
+}
+
+#tool-control-container .button {
+    border-left: 1px solid lightgrey;
+}
+
+#hide-grid-button {
+    width: 80px;
+    border-right: 1px solid lightgrey;
+}
