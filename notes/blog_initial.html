@@ -1,0 +1,125 @@
+
+
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+	<head>
+
+		<!-- Basic Page Needs
+	  ================================================== -->
+		<meta charset="utf-8">
+		<title>Blog</title>
+		<meta name="description" content="Greg Joy, Oxford full stack software developer's personal website.">
+		<meta name="author" content="Greg Joy">
+
+		<!-- Mobile Specific Metas
+	  ================================================== -->
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<!-- CSS
+	  ================================================== -->
+
+		<link href="//fonts.googleapis.com/css?family=Open+Sans:300italic,300,400italic,400,600italic,600,700italic,700,800italic,800" rel="stylesheet" type="text/css">
+
+		<link rel="stylesheet" href="/public/styles/normalize.css">
+		<link rel="stylesheet" href="/public/styles/layout.css">
+
+		<!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
+		<!-- Favicons
+		================================================== -->
+	<!-- 	<link rel="shortcut icon" href="images/favicon.ico">
+		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"> -->
+
+	</head>
+	
+	<body>
+
+		<div id="main-container">
+
+			<div id="header-container">
+
+				<div id="header-text-container">
+
+					<span>
+						Greg Joy
+					</span>
+				
+				</div>
+
+				<div id="menu-icon-container">
+					<img src="/public/images/menu-icon.png">
+				</div>
+
+				<div id="header-nav-container">
+					<ul id="header-nav-list"><li class="header-nav-item"><a href="/contact">Contact</a></li><li class="header-nav-item pre-load-selected"><a href="/blog">Blog</a></li><li class="header-nav-item"><a href="/projects">Projects</a></li>
+				</div>
+
+			</div>
+
+			<div class="page-rule">
+				&nbsp;
+			</div>
+
+			<div id="content-container">
+				<h1 class="page-header">
+					Blog
+				</h1>
+
+				<div class="blog-entry-container">
+				
+					<a href="/blog/initial-blog-post" class="hidden">
+						<h2>
+							Fun with MPS
+						</h2>
+					</a>
+					<span class="small">
+						6th April 2014
+					</span>
+
+					<p>
+						<a href="https://github.com/np1/mps" target="_BLANK">MPS</a> is a free music streaming console application written in python which allows you to search for music and stream it entirely from the comfort of your command line. Being a massive fan of <a href="https://github.com/zcoder/mocp" target="_BLANK">MOCP (which is completely awesome, check it out)</a>, I am already likely to be an advocate of this similar feeling application. 
+					</p>
+
+					<p>
+						Initially, I assumed that the application utilized YouTube to obtain the stream. I was wrong, it seems the author <a href="https://github.com/np1/mps-youtube" target="_BLANK">NP1 has already created a version of MPS that uses YouTube</a>. So where does the music actually come from? Looking at the source code, it appears that it obtains the stream from http://pleer.com/. Admittedly, the web site does little to make it feel legitimate and not at risk of inevitable legal action. The dependency MPS has on the website is draw back as I'm paranoid that it could be taken down at any moment.
+					</p>
+
+					<p>
+						Ethics aside, I think it makes a cool application that allows you to easily find and listen to music. I found it inspiring looking at it as a concept and how it works, and at the very least it has provided some stimulating food for though. 
+					</p>
+
+				</div>
+
+			</div>
+
+			<div class="page-rule">
+				&nbsp;
+			</div>
+			
+			<div id="footer-container">
+
+				<div id="footer-text-container">
+				
+					<span class="footer-text float-right">
+						Built with <img src="/public/images/heart.png" alt="love" class="footer-heart"> by Greg Joy
+					</span>
+				
+				</div>
+			
+			</div>
+
+		</div>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script type="text/javascript" src="/public/scripts/styles.js"></script>
+
+	</body>
+
+</html>

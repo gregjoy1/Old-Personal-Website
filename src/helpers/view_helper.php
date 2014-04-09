@@ -13,6 +13,8 @@
 
 			$description = ($description ? $description : $SITE_CONFIG['default_description']);
 
+			$title = $title . ' - gregjoy.co.uk';
+
 			$markUp = <<<HTML
 
 <!DOCTYPE html>
@@ -44,13 +46,6 @@
 		<!--[if lt IE 9]>
 			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
-
-		<!-- Favicons
-		================================================== -->
-	<!-- 	<link rel="shortcut icon" href="images/favicon.ico">
-		<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png"> -->
 
 	</head>
 	
@@ -101,7 +96,8 @@ HTML;
 			$menuItems = array(
 				'Contact' => 'contact',
 				'Blog' => 'blog',
-				'Projects' => 'projects'
+				'Projects' => 'projects',
+				'About' => 'about'
 			);
 	
 			$markUp = '<ul id="header-nav-list">';
